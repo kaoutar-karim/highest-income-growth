@@ -4,9 +4,8 @@ from sqlalchemy import create_engine
 
 
 class MysqlDriver:
-    def __init__(self, config, database_name):
+    def __init__(self, config):
         self.config = config
-        self.database_name = database_name
         self.create_database()
         self.create_db_connection()
 
@@ -18,12 +17,12 @@ class MysqlDriver:
                 passwd=self.config["PWD"],
             )
             cursor = self.db_connection.cursor()
-            cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.database_name};")
+            cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.config['DATABASE']};")
         except:
             raise Exception("Could not initiate database connection")
 
     def create_db_connection(self):
-        db_connection_str = f'mysql+pymysql://{self.config["USR"]}:{self.config["PWD"]}@localhost:3306/{self.database_name}'
+        db_connection_str = f'mysql+pymysql://{self.config["USR"]}:{self.config["PWD"]}@localhost:3306/{self.config["DATABASE"]}'
         db_connection = create_engine(db_connection_str)
         return db_connection
 

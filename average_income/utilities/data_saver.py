@@ -7,9 +7,7 @@ from average_income.utilities.mysql_driver import MysqlDriver
 class DataSaver:
     def __init__(self, config):
         self.config = config
-        self.mysql_driver = MysqlDriver(
-            config=config, database_name=self.config["DATABASE"]
-        )
+        self.mysql_driver = MysqlDriver(config=config)
         self.data_json = None
 
     def get_data_as_json(self, year):

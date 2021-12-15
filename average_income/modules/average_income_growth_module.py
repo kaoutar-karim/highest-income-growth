@@ -4,7 +4,7 @@ import pandas as pd
 
 class AverageIncome:
     def __init__(self, config):
-        self.db_driver = MysqlDriver(config=config, database_name=const.DATABASE)
+        self.db_driver = MysqlDriver(config=config)
         self.last_five_years = None
 
     def get_last_five_years_from_db(self):
