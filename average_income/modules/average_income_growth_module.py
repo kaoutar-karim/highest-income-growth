@@ -4,16 +4,21 @@ import pandas as pd
 
 class AverageIncome:
     def __init__(self, config):
+        self.config = config
         self.db_driver = MysqlDriver(config=config)
         self.last_five_years = None
 
     def get_last_five_years_from_db(self):
         columns = self.db_driver.execute_raw_query(
-            "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'average_income'"
+            f"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'average_income' AND TABLE_SCHEMA = '{self.config['DATABASE']}'"
         )
         columns = [column[3] for column in columns if column[3] != "postal_code"]
         columns.sort(reverse=True)
+        if len(columns) < 5:
+            raise Exception("Not enough years on the database for the calculation")
+
         self.last_five_years = columns[:5]
+
 
     def calculate_metrics(self):
         if not self.last_five_years:
