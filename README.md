@@ -10,12 +10,18 @@ This repository contains a python application that calculates the average growth
     
 2- Fill the configuration file under 'configurations' folder with the adequate parameters. ( an example of the conufig file can be found under './configurations/configuration_example.yaml')
 
-3- Install the project dependencies using the following comamnd:
+3- Install the project dependencies using the following command:
 ````
 $ pip install - r requirements.txt
 ````
 
-4- Run the program using the following command:
+4- export the project to your PYTHONPATH using the following command:
+```
+$ export PYTHONPATH='absolute path to the project root'
+
+```
+
+5- Run the program using the following command:
 ````
 $ python average_income/__main__.py configurations/configuration_example.yaml 
 ````
