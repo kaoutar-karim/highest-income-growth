@@ -1,5 +1,4 @@
 from average_income.utilities.mysql_driver import MysqlDriver
-import constants as const
 import pandas as pd
 
 
