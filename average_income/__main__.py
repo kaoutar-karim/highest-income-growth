@@ -17,6 +17,15 @@ def main():
     configuration_file = os.path.join(os.getcwd(), sys.argv[1])
     config = read_configuration_file(configuration_file)
 
+    # get the current from the user input for the annual automatic update
+    try:
+        config["LIST_OF_YEARS"] = [int(sys.argv[2])]
+    except IndexError:
+        pass
+    except ValueError:
+        print("please provide a valid year")
+        exit()
+
     # initiate data saver and avg_income_module
     data_saver = DataSaver(config=config)
     avg_income_module = AverageIncome(config=config)

@@ -19,7 +19,6 @@ class AverageIncome:
 
         self.last_five_years = columns[:5]
 
-
     def calculate_metrics(self):
         if not self.last_five_years:
             self.get_last_five_years_from_db()

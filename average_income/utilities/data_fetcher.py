@@ -88,7 +88,9 @@ class DataFetcher:
                 url=self.url, json=json.loads(self.generate_json_query())
             ).json()
         except simplejson.errors.JSONDecodeError:
-            raise Exception("data could not be fetched for the provided list of postal codes")
+            raise Exception(
+                "data could not be fetched for the provided list of postal codes"
+            )
         data["data_year"] = self.data_year
 
         return data
