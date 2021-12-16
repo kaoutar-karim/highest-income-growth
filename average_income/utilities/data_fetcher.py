@@ -83,9 +83,12 @@ class DataFetcher:
 
     def fetch_data_from_remote(self):
         self.url = self.url or self.generate_url()
-        data = requests.post(
-            url=self.url, json=json.loads(self.generate_json_query())
-        ).json()
+        try:
+            data = requests.post(
+                url=self.url, json=json.loads(self.generate_json_query())
+            ).json()
+        except simplejson.errors.JSONDecodeError:
+            raise Exception("data could not be fetched for the provided list of postal codes")
         data["data_year"] = self.data_year
 
         return data

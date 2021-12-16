@@ -4,12 +4,14 @@ PWD : 'Ghtn47es592'
 TABLE_DESC : "Inhabitants' disposable monetary income"
 BASE_URL : "https://pxnet2.stat.fi:443/PXWeb/api/v1/en/Postinumeroalueittainen_avoin_tieto"
 DATABASE : 'test_income'
+
 POSTAL_CODES :
     - "00130"
     - "02380"
     - "16710"
     - "41930"
     - "54800"
+
 LIST_OF_YEARS :
   - 2017
   - 2018
